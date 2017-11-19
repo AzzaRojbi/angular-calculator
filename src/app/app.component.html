@@ -1,0 +1,32 @@
+<h1>Angular Calculator</h1>
+ <form >
+
+  <h2>Sum</h2>  
+  <p> <input type="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="num1" [ngModelOptions]="{standalone: true}"> + 
+  <input type ="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="num2" [ngModelOptions]="{standalone: true}" >
+  <button (click) = "addValues()">=</button>
+  </p>
+  <h1> {{num1}} + {{num2}} = {{result}}</h1>
+
+  <h2>Difference</h2>  
+  <p> <input type="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="num1" [ngModelOptions]="{standalone: true}"> - 
+  <input type ="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="num2" [ngModelOptions]="{standalone: true}">
+  <button (click) = "substractValues()">=</button>
+  </p>
+  <h1> {{differenceResult}}</h1>
+
+  <h2>Product</h2>  
+  <p> <input type="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="num1" [ngModelOptions]="{standalone: true}"> + 
+  <input type ="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="num2" [ngModelOptions]="{standalone: true}">
+  <button (click) = "multiplyValues()">=</button>
+  </p>
+  <h1> {{productResult}}</h1>
+
+  <h2>Quotient</h2>  
+  <p> <input type="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="num1" [ngModelOptions]="{standalone: true}"> + 
+  <input type ="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="num2" [ngModelOptions]="{standalone: true}">
+  <button (click) = "divideValues()">=</button>
+  </p>
+  <h1> {{quotientResult}}</h1>
+
+  </form>
