@@ -10,11 +10,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   public result:number;
-  public num1:string;
-  public num2:string;
+  public sNum1:string;
+  public sNum2:string;
 
     addValues() {
-      this.result=Number(this.num1) + Number(this.num2);
+      this.result=Number(this.sNum1) + Number(this.sNum2);
   console.log(this.result);
     }
   
