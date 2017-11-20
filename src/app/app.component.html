@@ -1,46 +1,96 @@
 <h1>Angular Calculator</h1>
 
- <form (ngSubmit)="addValues()" #myForm="ngForm" >
+<form (ngSubmit)="addValues(); sForm.reset()" #sForm="ngForm">
 
-  <h2>Sum</h2>  
-  <div> <input type="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="sNum1" name="number" #number="ngModel"> + 
-  <input type ="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="sNum2" name="number" #number="ngModel" >
-  
-  <div [hidden]="number.valid || number.pristine">
-        Invalid input.
+  <h2>Sum</h2>
+
+  <div class="wrapper">
+
+    <div class="div1">
+      <input class="number-input" type="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="sNum1" name="snumber1" #snumber1="ngModel">
+      &nbsp; + &nbsp;
+      <input class="number-input" type="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="sNum2" name="snumber2" #snumber2="ngModel">
+      &nbsp;&nbsp;<button (click)="resetmultiplyValues(); resetdivideValues(); resetsubstractValues()" [disabled]="!sForm.form.valid">=</button>
+    </div>
+
+    <div class="div2" *ngIf="additionResult">
+      {{sNumber1}} + {{sNumber2}} = {{additionResult}}
+    </div>
+
   </div>
-  <p *ngIf="number?.errors?.pattern">
-        Only numeric inputs are allowed.</p>
-  <button (click) = "addValues()" [disabled]="!myForm.form.valid">=</button>
-  <h2 *ngIf="result">{{sNum1}} + {{sNum2}} = {{result}} </h2>  
+
+  <p class="error" *ngIf="(snumber1?.errors?.pattern) || (snumber2?.errors?.pattern) ">
+    *A number is required.</p>
+</form>
+
+<form (ngSubmit)="substractValues(); dForm.reset()" #dForm="ngForm">
+
+  <h2>Difference</h2>
+
+  <div class="wrapper">
+
+    <div class="div1">
+      <input class="number-input" type="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="dNum1" name="dnumber1" #dnumber1="ngModel">
+      &nbsp; - &nbsp;
+      <input class="number-input" type="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="dNum2" name="dnumber2" #dnumber2="ngModel">
+      &nbsp;&nbsp;<button (click)="resetaddValues(); resetdivideValues(); resetmultiplyValues()" [disabled]="!dForm.form.valid">=</button>
+    </div>
+
+    <div class="div2" *ngIf="differenceResult">
+      {{dNumber1}} - {{dNumber2}} = {{differenceResult}}
+    </div>
+
   </div>
 
-    <!-- <div *ngIf="result"> -->
-     <!-- </div> -->
-
-  <!-- <h1> {{sNum1}} + {{sNum2}} = {{result}}</h1> -->
+  <p class="error" *ngIf="(dnumber1?.errors?.pattern) || (dnumber2?.errors?.pattern) ">
+    *A number is required</p>
 
 </form>
 
-  <h2>Difference</h2>  
-  <p> <input type="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="dNum1" [ngModelOptions]="{standalone: true}"> - 
-  <input type ="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="dNum2" [ngModelOptions]="{standalone: true}">
-  <button (click) = "substractValues()">=</button>
-  </p>
-  <h1> {{differenceResult}}</h1>
+<form (ngSubmit)="multiplyValues(); pForm.reset()" #pForm="ngForm">
 
-  <h2>Product</h2>  
-  <p> <input type="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="pNum1" [ngModelOptions]="{standalone: true}"> + 
-  <input type ="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="pNum2" [ngModelOptions]="{standalone: true}">
-  <button (click) = "multiplyValues()">=</button>
-  </p>
-  <h1> {{productResult}}</h1>
+  <h2>Product</h2>
 
-  <h2>Quotient</h2>  
-  <p> <input type="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="qNum1" [ngModelOptions]="{standalone: true}"> + 
-  <input type ="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="qNum2" [ngModelOptions]="{standalone: true}">
-  <button (click) = "divideValues()">=</button>
-  </p>
-  <h1> {{quotientResult}}</h1>
+  <div class="wrapper">
 
-  
+    <div class="div1">
+      <input class="number-input" type="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="pNum1" name="pnumber1" #pnumber1="ngModel"> 
+      &nbsp; * &nbsp;
+      <input class="number-input" type="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="pNum2" name="pnumber2" #pnumber2="ngModel">
+      &nbsp;&nbsp;<button (click)="resetaddValues(); resetdivideValues(); resetsubstractValues()" [disabled]="!pForm.form.valid">=</button>
+    </div>
+
+    <div class="div2" *ngIf="productResult">
+      {{pNumber1}} * {{pNumber2}} = {{productResult}}
+    </div>
+
+  </div>
+
+  <p class="error" *ngIf="(pnumber1?.errors?.pattern) || (pnumber2?.errors?.pattern) ">
+    *A number is required</p>
+
+</form>
+
+<form (ngSubmit)="divideValues(); qForm.reset()" #qForm="ngForm">
+
+  <h2>Quotient</h2>
+
+  <div class="wrapper">
+
+    <div class="div1">
+      <input class="number-input" type="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="qNum1" name="qnumber1" #qnumber1="ngModel"> 
+      &nbsp; / &nbsp;
+      <input class="number-input" type="text" pattern="^[+-]*[0-9]*[\.]?[0-9]*$" [(ngModel)]="qNum2" name="qnumber2" #qnumber2="ngModel">
+      &nbsp;&nbsp;<button (click)="resetaddValues(); resetmultiplyValues(); resetsubstractValues()" [disabled]="!qForm.form.valid">=</button>
+    </div>
+
+    <div class="div2" *ngIf="quotientResult">
+      {{qNumber1}} / {{qNumber2}} = {{quotientResult}}
+    </div>
+
+  </div>
+
+  <p class="error" *ngIf="(qnumber1?.errors?.pattern) || (qnumber2?.errors?.pattern) ">
+    *A number is required</p>
+
+</form>

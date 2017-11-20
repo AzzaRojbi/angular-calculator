@@ -1,0 +1,27 @@
+.number-input {
+  width: 50px;
+  border: 2px solid rgb(97, 92, 92);
+}
+
+.error {
+  background: #B52D30;
+  color: #fff;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  width: 150px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: baseline;
+}
+
+.div1 {
+  margin-right: 20px;
+}
+
+h1{
+  color: red;
+}
